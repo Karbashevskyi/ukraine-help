@@ -1,0 +1,7 @@
+{
+  "name": "ukraine-help",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
