@@ -5,6 +5,13 @@
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
+    "ion:serve": "ionic serve --no-open",
+    "ion:serve:proxy": "ionic serve --no-open --proxy-config proxy.config.json",
+    "ion:build": "ionic build",
+    "fb:deploy:host": "firebase deploy --only=hosting",
+    "start:proxy": "ng serve --proxy-config proxy.config.json",
+    "start:proxy:external": "ng serve --proxy-config proxy.config.json --host 0.0.0.0 --disable-host-check",
+    "start:external": "ng serve --host 0.0.0.0 --disable-host-check",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
