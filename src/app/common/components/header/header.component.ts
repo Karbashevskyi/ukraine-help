@@ -26,6 +26,8 @@ import {LanguageEnum} from '@app/common/enums/app/language.enum';
 })
 export class HeaderComponent {
 
+  private alertForLanguageIsOpened: boolean = false;
+
   constructor(
     private readonly translateService: TranslateService,
     private readonly alertController: AlertController,
@@ -37,6 +39,12 @@ export class HeaderComponent {
   }
 
   public openAlertOfLanguageList(): void {
+
+    if (this.alertForLanguageIsOpened) {
+      return;
+    }
+
+    this.alertForLanguageIsOpened = true;
 
     this.alertController.create({
       header: 'Language',
@@ -60,11 +68,13 @@ export class HeaderComponent {
           cssClass: 'secondary',
           handler: () => {
             console.log('Confirm Cancel');
+            this.alertForLanguageIsOpened = false;
           }
         }, {
           text: 'Ok',
           handler: (codeOfLanguage: string) => {
             this.translateService.setDefaultLang(codeOfLanguage);
+            this.alertForLanguageIsOpened = false;
           }
         }
       ]
