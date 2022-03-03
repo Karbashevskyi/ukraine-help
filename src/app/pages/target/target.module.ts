@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { TargetPageRoutingModule } from './target-routing.module';
 
 import { TargetPage } from './target.page';
+import {HeaderModule} from '@app/common/components/header/header.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TargetPageRoutingModule
+    TargetPageRoutingModule,
+    HeaderModule
   ],
   declarations: [TargetPage]
 })

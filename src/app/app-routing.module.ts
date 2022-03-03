@@ -16,7 +16,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/feed/feed.module').then( m => m.FeedPageModule)
   },
   {
-    path: 'target',
+    path: 'target/:target',
     loadChildren: () => import('./pages/target/target.module').then( m => m.TargetPageModule)
   },
 ];

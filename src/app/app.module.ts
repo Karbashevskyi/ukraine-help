@@ -10,6 +10,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {ApiService} from '@app/common/services/api/api.service';
+import {HeaderModule} from '@app/common/components/header/header.module';
 
 export const createTranslateLoader = (http: HttpClient): TranslateHttpLoader => new TranslateHttpLoader(http);
 
@@ -21,7 +22,9 @@ const api = [
 const app = [];
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent
+  ],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ const app = [];
         deps: [HttpClient]
       }
     }),
+    HeaderModule,
   ],
   providers: [
     {

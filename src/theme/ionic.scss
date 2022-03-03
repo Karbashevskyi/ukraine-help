@@ -1,0 +1,16 @@
+.ion-page {
+  padding: 57px calc(50% - 344px) 0;
+}
+
+
+ion-toolbar {
+
+  padding: 0 calc(50% - 344px);
+
+}
+
+ion-router-outlet {
+  ion-toolbar {
+    --ion-toolbar-background: transparent;
+  }
+}
