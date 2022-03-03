@@ -1,7 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
-import {languageNameList} from '@app/common/consts/app/language.const';
-import {HeaderServiceComponent} from '@app/common/components/header/services/header.service.component';
 
 @Component({
   selector: 'app-home',
