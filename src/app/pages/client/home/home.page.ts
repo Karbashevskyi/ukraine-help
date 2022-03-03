@@ -56,7 +56,7 @@ export class HomePage implements OnInit {
         content: `${this.translateCardListPath}.${TargetEnum.NEED_HELP}.content`,
         target: TargetEnum.NEED_HELP,
         color: IonColor.WARNING,
-        icon: 'sad-outline'
+        icon: 'accessibility-outline'
       },
     ]);
   }
