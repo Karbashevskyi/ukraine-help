@@ -2,7 +2,7 @@
 
   <ng-container *ngFor="let card of cards; let index = index">
     <div class="ion-activatable ripple-parent">
-      <ion-card [routerLink]="['/target', (card.target | translate)]">
+      <ion-card [routerLink]="['/target', card.target]">
         <ion-card-header>
           <ion-card-title [ngSwitch]="index">
 

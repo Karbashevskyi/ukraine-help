@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {TargetEnum} from '@app/common/enums/target.enum';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ export class HomePage implements OnInit {
     title: string;
     subtitle: string;
     content: string;
-    target: string;
+    target: TargetEnum;
   }[] = [];
 
   ngOnInit(): void {
@@ -28,13 +29,13 @@ export class HomePage implements OnInit {
         title: 'main.cards.0.title',
         subtitle: 'main.cards.0.subtitle',
         content: 'main.cards.0.content',
-        target: 'main.cards.0.target',
+        target: TargetEnum.NEED_HELP,
       },
       {
         title: 'main.cards.1.title',
         subtitle: 'main.cards.1.subtitle',
         content: 'main.cards.1.content',
-        target: 'main.cards.1.target',
+        target: TargetEnum.TO_HELP,
       }
     ]);
   }
