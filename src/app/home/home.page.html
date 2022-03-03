@@ -1,17 +1,26 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-label>{{ nameOfLanguage }}</ion-label>
+        <ion-icon slot="end" name="globe-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+<!--    <ion-title>Default Buttons</ion-title>-->
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<!--  <ion-header collapse="condense">-->
+<!--    <ion-toolbar>-->
+<!--      <ion-title size="large">Blank</ion-title>-->
+<!--    </ion-toolbar>-->
+<!--  </ion-header>-->
 
   <ng-container *ngFor="let card of cards">
     <div class="ion-activatable ripple-parent">
@@ -28,5 +37,14 @@
       </ion-card>
     </div>
   </ng-container>
+
+  <div class="ion-text-center ion-padding">
+    <ion-text color="medium">
+      {{ 'author.contact.email.label' | translate }}
+    </ion-text>
+    <ion-text>
+      <a [href]="'mailto:' + ('author.contact.email.value' | translate)">{{ 'author.contact.email.value' | translate }}</a>
+    </ion-text>
+  </div>
 
 </ion-content>

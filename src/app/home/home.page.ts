@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {TranslateService} from '@ngx-translate/core';
+import {languageNameList} from '@app/common/consts/app/language.const';
 
 @Component({
   selector: 'app-home',
@@ -13,18 +15,24 @@ export class HomePage implements OnInit {
     content: string;
   }[] = [];
 
-  constructor() {
+  constructor(
+    private readonly translateService: TranslateService
+  ) {
 
   }
 
-  ngOnInit() {
+  public get nameOfLanguage(): string {
+    return languageNameList[this.translateService.defaultLang];
+  }
+
+  ngOnInit(): void {
 
     this.initCards();
 
   }
 
   private initCards(): void {
-    this.cards.length = 0;
+    this.resetCards();
 
     this.cards.push(...[
       {
@@ -38,5 +46,11 @@ export class HomePage implements OnInit {
         content: 'main.cards.1.content',
       }
     ]);
+  }
+
+  private resetCards(): void {
+
+    this.cards.length = 0;
+
   }
 }
