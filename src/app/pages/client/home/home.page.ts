@@ -21,6 +21,8 @@ export enum IonColor {
 })
 export class HomePage implements OnInit {
 
+  public readonly translateCardListPath: string = `pages.home.cards`;
+
   public readonly cards: {
     title: string;
     subtitle: string;
@@ -41,21 +43,21 @@ export class HomePage implements OnInit {
 
     this.cards.push(...[
       {
-        title: 'pages.home.cards.0.title',
-        subtitle: 'pages.home.cards.0.subtitle',
-        content: 'pages.home.cards.0.content',
+        title: `${this.translateCardListPath}.${TargetEnum.TO_HELP}.title`,
+        subtitle: `${this.translateCardListPath}.${TargetEnum.TO_HELP}.subtitle`,
+        content: `${this.translateCardListPath}.${TargetEnum.TO_HELP}.content`,
+        target: TargetEnum.TO_HELP,
+        color: IonColor.PRIMARY,
+        icon: 'megaphone-outline'
+      },
+      {
+        title: `${this.translateCardListPath}.${TargetEnum.NEED_HELP}.title`,
+        subtitle: `${this.translateCardListPath}.${TargetEnum.NEED_HELP}.subtitle`,
+        content: `${this.translateCardListPath}.${TargetEnum.NEED_HELP}.content`,
         target: TargetEnum.NEED_HELP,
         color: IonColor.WARNING,
         icon: 'sad-outline'
       },
-      {
-        title: 'pages.home.cards.1.title',
-        subtitle: 'pages.home.cards.1.subtitle',
-        content: 'pages.home.cards.1.content',
-        target: TargetEnum.TO_HELP,
-        color: IonColor.TERTIARY,
-        icon: 'megaphone-outline'
-      }
     ]);
   }
 

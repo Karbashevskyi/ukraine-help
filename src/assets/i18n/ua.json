@@ -64,6 +64,46 @@
     }
   },
   "main": {
+    "emergencyServicesContacts": {
+      "title": "Контакти екстрених служб",
+      "primary": {
+        "general": {
+          "title": "Загальне (як в США 911)",
+          "phone": "112"
+        },
+        "police": {
+          "title": "Поліція",
+          "phone": "997"
+        },
+        "firefighters": {
+          "title": "Пожежна служба",
+          "phone": "998"
+        },
+        "ambulance": {
+          "title": "Швидка медична допомога",
+          "phone": "999"
+        }
+      },
+      "other": {
+        "title": "Додаткові контакти: вода, газ...",
+        "energetic": {
+          "title": "Енергійний (електроенергія, провода, тощо)",
+          "phone": "991"
+        },
+        "gas": {
+          "title": "Газова служба",
+          "phone": "992"
+        },
+        "thermal": {
+          "title": "Термічна допомога (батареї, тощо)",
+          "phone": "993"
+        },
+        "waterSupply": {
+          "title": "Постачання води",
+          "phone": "994"
+        }
+      }
+    }
   },
   "author": {
     "contact": {

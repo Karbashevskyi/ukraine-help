@@ -7,6 +7,9 @@ import {HomePage} from './home.page';
 import {HomePageRoutingModule} from './home-routing.module';
 import {TranslateModule} from '@ngx-translate/core';
 import {HeaderModule} from '@app/common/components/header/header.module';
+import {
+  EmergencyServicesContactsModule
+} from '@app/common/components/emergency-services-contacts/emergency-services-contacts.module';
 
 
 @NgModule({
@@ -16,7 +19,8 @@ import {HeaderModule} from '@app/common/components/header/header.module';
     IonicModule,
     HomePageRoutingModule,
     TranslateModule,
-    HeaderModule
+    HeaderModule,
+    EmergencyServicesContactsModule
   ],
   declarations: [
     HomePage,
