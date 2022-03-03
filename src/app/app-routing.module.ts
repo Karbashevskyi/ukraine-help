@@ -7,11 +7,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/client/home/home.module').then(m => m.HomePageModule)
   },
   {
-    path: '',
-    redirectTo: '',
-    pathMatch: 'full'
-  },
-  {
     path: 'feed',
     loadChildren: () => import('./pages/client/feed/feed.module').then(m => m.FeedPageModule)
   },
@@ -27,11 +22,19 @@ const routes: Routes = [
     path: 'organization',
     loadChildren: () => import('./pages/client/organization/organization.module').then(m => m.OrganizationPageModule)
   },
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: PreloadAllModules,
+      relativeLinkResolution: 'corrected'
+    })
   ],
   exports: [RouterModule]
 })

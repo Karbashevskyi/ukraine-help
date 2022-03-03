@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {DefaultLangChangeEvent, TranslateService} from '@ngx-translate/core';
 import {Reactive} from '@app/common/cdk/reactive';
 import {CheckersTool} from '@app/common/tools/checkers.tool';
@@ -9,7 +9,7 @@ import {LanguageEnum} from '@app/common/enums/app/language.enum';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent extends Reactive implements OnInit {
   constructor(

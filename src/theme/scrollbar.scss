@@ -1,0 +1,52 @@
+$scrollbar-color: #00000000;
+$overflow: overlay;
+
+@supports not (overflow: overlay) {
+  $overflow: auto;
+}
+
+* {
+  overflow: $overflow;
+  scrollbar-width: thin;
+
+  :hover {
+    $scrollbar-color: #00000040;
+  }
+
+}
+
+::-webkit-scrollbar {
+  display: block;
+  width: 16px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #00000000;
+  // OLD
+  box-shadow: unset;
+  border-radius: unset;
+  margin: unset;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: #00000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00000000;
+  border: 5px solid transparent;
+  border-radius: 24px;
+  box-shadow: 4px 0 0 4px $scrollbar-color inset;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $scrollbar-color;
+  border: 0 solid transparent;
+  box-shadow: none;
+
+}

@@ -1,17 +1,17 @@
 <ion-content [fullscreen]="true">
 
+  <div class="ion-text-center ion-padding">
+    <ion-text color="info">
+      {{ 'pages.home.title' | translate }}
+    </ion-text>
+  </div>
+
   <ng-container *ngFor="let card of cards; let index = index">
     <div class="ion-activatable ripple-parent">
-      <ion-card [routerLink]="['/target', card.target]">
+      <ion-card [routerLink]="['/target', card.target]" [color]="card.color">
         <ion-card-header>
-          <ion-card-title [ngSwitch]="index">
-
-            <ng-container *ngSwitchCase="0">
-              <ion-icon name="sad-outline"></ion-icon>
-            </ng-container>
-            <ng-container *ngSwitchCase="1">
-              <ion-icon name="megaphone-outline"></ion-icon>
-            </ng-container>
+          <ion-card-title class="ion-align-items-center">
+            <ion-icon [name]="card.icon"></ion-icon>
             {{ card.title | translate }}
           </ion-card-title>
         </ion-card-header>

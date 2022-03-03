@@ -1,10 +1,23 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {TargetEnum} from '@app/common/enums/target.enum';
+
+export enum IonColor {
+  PRIMARY = 'primary',
+  SECONDARY = 'secondary',
+  TERTIARY = 'tertiary',
+  SUCCESS = 'success',
+  WARNING = 'warning',
+  DANGER = 'danger',
+  LIGHT = 'light',
+  MEDIUM = 'medium',
+  DARK = 'dark',
+}
+
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class HomePage implements OnInit {
 
@@ -12,7 +25,9 @@ export class HomePage implements OnInit {
     title: string;
     subtitle: string;
     content: string;
+    icon: string;
     target: TargetEnum;
+    color: IonColor;
   }[] = [];
 
   ngOnInit(): void {
@@ -26,16 +41,20 @@ export class HomePage implements OnInit {
 
     this.cards.push(...[
       {
-        title: 'main.cards.0.title',
-        subtitle: 'main.cards.0.subtitle',
-        content: 'main.cards.0.content',
+        title: 'pages.home.cards.0.title',
+        subtitle: 'pages.home.cards.0.subtitle',
+        content: 'pages.home.cards.0.content',
         target: TargetEnum.NEED_HELP,
+        color: IonColor.WARNING,
+        icon: 'sad-outline'
       },
       {
-        title: 'main.cards.1.title',
-        subtitle: 'main.cards.1.subtitle',
-        content: 'main.cards.1.content',
+        title: 'pages.home.cards.1.title',
+        subtitle: 'pages.home.cards.1.subtitle',
+        content: 'pages.home.cards.1.content',
         target: TargetEnum.TO_HELP,
+        color: IonColor.TERTIARY,
+        icon: 'megaphone-outline'
       }
     ]);
   }

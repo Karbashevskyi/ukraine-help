@@ -1,17 +1,15 @@
 import {Injectable} from '@angular/core';
 import {TargetEnum} from '@app/common/enums/target.enum';
 import {Observable, ReplaySubject} from 'rxjs';
+import {TranslateService} from '@ngx-translate/core';
+import {CheckersTool} from '@app/common/tools/checkers.tool';
 
-interface OfferInterface {
+export interface TargetCardInterface {
   title: string;
-  url: string;
-}
+  subtitle: string;
+};
 
-export interface OfferListInterface {
-  list: OfferInterface[];
-}
-
-type TargetSourceType = Record<TargetEnum, OfferListInterface>;
+export type TargetCardList = TargetCardInterface[];
 
 @Injectable({
   providedIn: 'root'
@@ -20,54 +18,21 @@ export class TargetServiceApp {
 
   #selectedTarget: TargetEnum = null;
 
-  private readonly source: TargetSourceType = {
-    [TargetEnum.NEED_HELP]: {
-      list: [
-        {
-          title: 'Room',
-          url: '123'
-        },
-        {
-          title: 'Food',
-          url: '123'
-        },
-        {
-          title: 'Contacts',
-          url: '123'
-        }
-      ]
-    },
-    [TargetEnum.TO_HELP]: {
-      list: [
-        {
-          title: 'Room',
-          url: '123'
-        },
-        {
-          title: 'Food',
-          url: '123'
-        },
-        {
-          title: 'Stuff',
-          url: '123'
-        },
-        {
-          title: 'Transport',
-          url: '123'
-        },
-        {
-          title: 'Money',
-          url: '123'
-        },
-        {
-          title: 'Other',
-          url: '123'
-        }
-      ]
-    }
-  };
+  public readonly cardList: TargetCardList = [];
+  public readonly rootOfTranslate: string = 'pages.target';
+  public readonly rootOfCardListTranslate: string = `${this.rootOfTranslate}.cards`;
 
-  private readonly offerListSource$: ReplaySubject<OfferListInterface> = new ReplaySubject<OfferListInterface>(1);
+  private readonly targetCardListSource$: ReplaySubject<TargetCardList> = new ReplaySubject<TargetCardList>(1);
+
+  constructor(
+    private readonly translateService: TranslateService
+  ) {
+  }
+
+
+  public get cardList$(): Observable<TargetCardList> {
+    return this.targetCardListSource$.asObservable();
+  }
 
   public getSelectedTarget(): TargetEnum {
     return this.#selectedTarget;
@@ -81,14 +46,27 @@ export class TargetServiceApp {
     this.#selectedTarget = value;
   }
 
-  public get offerList$(): Observable<OfferListInterface> {
-    return this.offerListSource$.asObservable();
-  }
-
   public updateSource(): void {
 
-    this.offerListSource$.next(this.source[this.#selectedTarget]);
 
+    this.resetCardList();
+
+    const cardList: TargetCardInterface[] = this.translateService.instant(`${this.rootOfCardListTranslate}.${this.#selectedTarget}`);
+
+    if (CheckersTool.isNotNullOrUndefinedOrEmpty(cardList)) {
+
+      this.cardList.push(...Object.values(cardList));
+      this.targetCardListSource$.next(this.cardList);
+
+    }
+
+    console.log(this.cardList);
+
+
+  }
+
+  private resetCardList(): void {
+    this.cardList.length = 0;
   }
 
 }

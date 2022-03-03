@@ -1,19 +1,22 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, Params, Route} from '@angular/router';
 import {Reactive} from '@app/common/cdk/reactive';
 import {CheckersTool} from '@app/common/tools/checkers.tool';
 import {TargetEnum} from '@app/common/enums/target.enum';
-import {OfferListInterface, TargetServiceApp} from '@app/common/services/app/target/target.service.app';
 import {Observable} from 'rxjs';
+import {TranslateService} from '@ngx-translate/core';
+import {TargetCardList, TargetServiceApp} from '@app/common/services/app/target/target.service.app';
+
 
 @Component({
   selector: 'app-target',
   templateUrl: './target.page.html',
-  styleUrls: ['./target.page.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class TargetPage extends Reactive implements OnInit {
 
   constructor(
+    private readonly translateService: TranslateService,
     private readonly activatedRoute: ActivatedRoute,
     private readonly targetServiceApp: TargetServiceApp,
   ) {
@@ -26,9 +29,9 @@ export class TargetPage extends Reactive implements OnInit {
 
   }
 
-  public get offerList$(): Observable<OfferListInterface> {
+  public get cardList$(): Observable<TargetCardList> {
 
-    return this.targetServiceApp.offerList$.pipe(this.takeUntil()) as Observable<OfferListInterface>;
+    return this.targetServiceApp.cardList$.pipe(this.takeUntil()) as Observable<TargetCardList>;
 
   }
 

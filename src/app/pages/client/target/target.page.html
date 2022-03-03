@@ -4,33 +4,31 @@
       <ion-back-button [defaultHref]="['/']"></ion-back-button>
     </ion-buttons>
     <ion-title>
-      {{ 'main.cards.' + selectedTarget + '.title' | translate}}
+      {{ 'pages.home.cards.' + selectedTarget + '.title' | translate}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ng-container *ngIf="offerList$ | async as offerList">
-    <ion-grid>
-      <ion-row>
-        <ng-container *ngFor="let offer of offerList.list">
-          <ion-col size="4">
-            <div class="ion-activatable ripple-parent">
-              <ion-card>
-                <ion-card-header>
-                  <ion-card-title>
-                    {{ offer.title }}
-                  </ion-card-title>
-                </ion-card-header>
-
-                <ion-card-content>
+  <ng-container *ngIf="cardList$ | async as cardList">
+    <ion-row>
+      <ng-container *ngFor="let offer of cardList">
+        <ion-col size="12">
+          <div class="ion-activatable ripple-parent">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>
                   {{ offer.title }}
-                </ion-card-content>
-                <ion-ripple-effect></ion-ripple-effect>
-              </ion-card>
-            </div>
-          </ion-col>
-        </ng-container>
-      </ion-row>
-    </ion-grid>
+                </ion-card-title>
+              </ion-card-header>
+
+              <ion-card-content>
+                {{ offer.subtitle }}
+              </ion-card-content>
+              <ion-ripple-effect></ion-ripple-effect>
+            </ion-card>
+          </div>
+        </ion-col>
+      </ng-container>
+    </ion-row>
   </ng-container>
 </ion-content>
