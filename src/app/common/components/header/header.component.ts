@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {languageNameList} from '@app/common/consts/app/language.const';
+import {AlertController} from '@ionic/angular';
+import {LanguageEnum} from '@app/common/enums/app/language.enum';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +15,7 @@ import {languageNameList} from '@app/common/consts/app/language.const';
           </ion-button>
         </ion-buttons>
         <ion-buttons slot="end">
-          <ion-button>
+          <ion-button (click)="openAlertOfLanguageList()">
             <ion-label>{{ nameOfLanguage }}</ion-label>
             <ion-icon slot="end" name="language-outline"></ion-icon>
           </ion-button>
@@ -26,11 +28,50 @@ export class HeaderComponent {
 
   constructor(
     private readonly translateService: TranslateService,
+    private readonly alertController: AlertController,
   ) {
   }
 
   public get nameOfLanguage(): string {
     return languageNameList[this.translateService.defaultLang];
+  }
+
+  public openAlertOfLanguageList(): void {
+
+    this.alertController.create({
+      header: 'Language',
+      keyboardClose: true,
+      backdropDismiss: true,
+      inputs: Object.values(LanguageEnum).map((codeOfLanguage: string) => {
+
+        return {
+          name: codeOfLanguage,
+          type: 'radio',
+          label: languageNameList[codeOfLanguage],
+          value: codeOfLanguage,
+          checked: codeOfLanguage === this.translateService.getDefaultLang()
+        };
+
+      }),
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'Ok',
+          handler: (codeOfLanguage: string) => {
+            this.translateService.setDefaultLang(codeOfLanguage);
+          }
+        }
+      ]
+    }).then((alert) => {
+      alert.present();
+    });
+
   }
 
 }
