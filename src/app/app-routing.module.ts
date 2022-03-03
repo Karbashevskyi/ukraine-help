@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
+    loadChildren: () => import('./pages/client/home/home.module').then(m => m.HomePageModule)
   },
   {
     path: '',
@@ -13,19 +13,19 @@ const routes: Routes = [
   },
   {
     path: 'feed',
-    loadChildren: () => import('./pages/feed/feed.module').then( m => m.FeedPageModule)
+    loadChildren: () => import('./pages/client/feed/feed.module').then(m => m.FeedPageModule)
   },
   {
     path: 'target/:target',
-    loadChildren: () => import('./pages/target/target.module').then( m => m.TargetPageModule)
+    loadChildren: () => import('./pages/client/target/target.module').then(m => m.TargetPageModule)
   },
   {
     path: 'form',
-    loadChildren: () => import('./pages/form/form.module').then( m => m.FormPageModule)
+    loadChildren: () => import('./pages/client/form/form.module').then(m => m.FormPageModule)
   },
   {
     path: 'organization',
-    loadChildren: () => import('./pages/organization/organization.module').then( m => m.OrganizationPageModule)
+    loadChildren: () => import('./pages/client/organization/organization.module').then(m => m.OrganizationPageModule)
   },
 ];
 
