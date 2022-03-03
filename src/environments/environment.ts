@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  host: 'api'
+  host: 'api',
+  appName: 'ukraine-help',
+  version: '0.0.0'
 };
 
 /*

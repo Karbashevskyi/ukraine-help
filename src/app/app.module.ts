@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouteReuseStrategy} from '@angular/router';
 
@@ -9,10 +9,16 @@ import {AppRoutingModule} from './app-routing.module';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {ApiService} from '@app/common/services/api/api.service';
 
-export const createTranslateLoader = (http: HttpClient): TranslateHttpLoader => {
-  return new TranslateHttpLoader(http);
-};
+export const createTranslateLoader = (http: HttpClient): TranslateHttpLoader => new TranslateHttpLoader(http);
+
+const api = [
+  ApiService,
+];
+
+// TODO change declarations
+const app = [];
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,8 +36,21 @@ export const createTranslateLoader = (http: HttpClient): TranslateHttpLoader => 
       }
     }),
   ],
-  providers: [{provide: RouteReuseStrategy, useClass: IonicRouteStrategy}],
-  bootstrap: [AppComponent],
+  providers: [
+    {
+      provide: RouteReuseStrategy,
+      useClass: IonicRouteStrategy
+    },
+    {
+      provide: LOCALE_ID,
+      useValue: 'ua-UK'
+    },
+    ...api,
+    ...app
+  ],
+  bootstrap: [
+    AppComponent
+  ],
 })
 export class AppModule {
 }

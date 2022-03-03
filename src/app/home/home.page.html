@@ -13,8 +13,20 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ng-container *ngFor="let card of cards">
+    <div class="ion-activatable ripple-parent">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>{{ card.subtitle | translate }}</ion-card-subtitle>
+          <ion-card-title>{{ card.title | translate }}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          {{ card.content | translate }}
+        </ion-card-content>
+        <ion-ripple-effect></ion-ripple-effect>
+      </ion-card>
+    </div>
+  </ng-container>
+
 </ion-content>
