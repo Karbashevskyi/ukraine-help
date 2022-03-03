@@ -11,6 +11,14 @@ const routes: Routes = [
     redirectTo: '',
     pathMatch: 'full'
   },
+  {
+    path: 'feed',
+    loadChildren: () => import('./pages/feed/feed.module').then( m => m.FeedPageModule)
+  },
+  {
+    path: 'target',
+    loadChildren: () => import('./pages/target/target.module').then( m => m.TargetPageModule)
+  },
 ];
 
 @NgModule({
